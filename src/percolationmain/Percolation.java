@@ -1,3 +1,4 @@
+package percolationmain;
 //import java.io.Console;
 //import java.lang.reflect.Array;
 //import java.util.Arrays;
@@ -17,14 +18,14 @@ public class Percolation {
         this.n = n;
         this.array = new int[n][n]; // initialise the arra
         this.finderunionizer = new WeightedQuickUnionUF(n*n);
-        int percolated = 0;
+        boolean percolated = false;
         int m;
         
-        while(percolated == 0){
+        while(percolated == false){
             
             for (int i = 0; i < this.n; i++){ 
                 m = StdRandom.uniformInt(0, this.n);
-                this.array[i][m] = 1; 
+                this.open(i,m); 
                 };
 
             for (int i = 0; i < this.n; i++){ 
@@ -77,7 +78,7 @@ public class Percolation {
                 for(int j = this.n * this.n - this.n; j < this.n * this.n; j++){ 
                     //System.out.println(j);
                     if(this.finderunionizer.find(i) == this.finderunionizer.find(j)){
-                        percolated = 1;
+                        percolated = this.percolates();
                         break;
                     }
                 //System.out.println("-----------------------------------------");    
@@ -98,8 +99,6 @@ public class Percolation {
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col){
-        //System.out.println(row);
-        //System.out.println(col);
         try{
             if(this.array[row][col] == 1)return true;
             else return false;}
@@ -110,8 +109,6 @@ public class Percolation {
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col){
-        //System.out.println(row);
-        //System.out.println(col);
         if(this.array[row][col] == 0)return true;
         else return false;
     }
@@ -125,13 +122,13 @@ public class Percolation {
             for(int i: arr)
                 sum+=i;
     
-    return this.n * this.n - sum;
+    return sum;
     }  
 
 
     // does the system percolate?
     public boolean percolates(){
-        return false;
+        return true;
     }
 
 
