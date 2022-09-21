@@ -3,6 +3,8 @@ package percolationmain;
 //import java.lang.reflect.Array;
 //import java.util.Arrays;
 
+//import java.util.Arrays;
+
 import edu.princeton.cs.algs4.StdRandom;
 //import edu.princeton.cs.algs4.StdStats;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
@@ -10,8 +12,8 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation {
     
     private WeightedQuickUnionUF finderunionizer;
-    public int[][] array;
-    public int n;
+    private int[][] array;
+    private int n;
 
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n){
@@ -99,11 +101,13 @@ public class Percolation {
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col){
-        try{
+
+        if (row  < this.n && row >= 0 && col < this.n && col >= 0){
             if(this.array[row][col] == 1)return true;
-            else return false;}
-        catch(Exception e){
-           return false;
+            else return false;
+        }
+        else{
+            return false;
         }  
     }
 
@@ -118,10 +122,9 @@ public class Percolation {
     
         int sum = 0;
 
-        for (int[] arr : array)
+        for (int[] arr : this.array)
             for(int i: arr)
                 sum+=i;
-    
     return sum;
     }  
 
@@ -134,7 +137,8 @@ public class Percolation {
 
     // test client (optional)
     public static void main(String[] args){
-        Percolation percolate = new Percolation(10);
+        Percolation percolate = new Percolation(2);
+        System.out.println(percolate.numberOfOpenSites());
     }
         
 }
