@@ -28,8 +28,10 @@ public class Percolation {
 
     // opens the site (row, col) if it is not open already
     public void open(int row, int col){
-        this.array[row][col] = 1; //open the location
-        join(row, col); //join the location
+        if(this.array[row][col] == 0){
+            this.array[row][col] = 1; //open the location
+            join(row, col); //join the location
+        }
     }
 
     // is the site (row, col) open?
@@ -114,7 +116,7 @@ public class Percolation {
 
     // test client (optional)
     public static void main(String[] args){
-        Percolation percolate = new Percolation(-2);
+        Percolation percolate = new Percolation(10);
         percolate.visualize();
     }
         
