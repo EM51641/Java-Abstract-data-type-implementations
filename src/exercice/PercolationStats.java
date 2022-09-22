@@ -19,7 +19,6 @@ public class PercolationStats {
             int openCase = percolation.numberOfOpenSites();
             this.arr[i] = openCase/(this.n * this.n);
         }
-
     }
 
     // sample mean of percolation threshold

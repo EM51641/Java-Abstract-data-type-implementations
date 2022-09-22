@@ -8,6 +8,7 @@ public class Percolation {
     private WeightedQuickUnionUF finderunionizer;
     private int[][] array;
     private int n;
+    private int count;
 
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n){
@@ -17,6 +18,7 @@ public class Percolation {
         }
 
         this.n = n; 
+        this.count = 0;
         this.array = new int[n][n]; // initialise the array
         this.finderunionizer = new WeightedQuickUnionUF(n*n + 2); //initialise the index list while adding 2 virtual boxes at the beginning and the end of the array
         this.connectVirtualBlock(); // connection the virtual boxes so as to limit the search operation to a O(n) complexity instead of an O(n^2)
@@ -31,6 +33,7 @@ public class Percolation {
         if(this.array[row][col] == 0){
             this.array[row][col] = 1; //open the location
             join(row, col); //join the location
+            this.count = this.count + 1;
         }
     }
 
@@ -64,7 +67,7 @@ public class Percolation {
     return sum ;
     }  
 
-    // join the index
+    // join the nearest locations if possibles
     private void join(int row, int col){
 
         if(col < this.n - 1 && this.isOpen(row, col + 1)){
