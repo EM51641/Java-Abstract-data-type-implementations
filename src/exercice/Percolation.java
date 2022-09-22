@@ -1,13 +1,5 @@
-//package exercice;
-//import java.io.Console;
-//import java.lang.reflect.Array;
-//import java.util.Arrays;
-
-//import java.util.Arrays;
-
 import java.util.Arrays;
 import edu.princeton.cs.algs4.StdRandom;
-//import edu.princeton.cs.algs4.StdStats;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 
