@@ -1,3 +1,4 @@
+package src;
 import java.lang.Math;
 import edu.princeton.cs.algs4.StdStats;
 
